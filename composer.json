@@ -1,8 +1,8 @@
 {
-    "name": "sebalbisu/zenda"
+    "name": "sebalbisu/zenda",
     "autoload": {
         "psr-0": {
             "ZendA": "."
         }
-    },
+    }
 }
