@@ -18,6 +18,16 @@ class Logs
     {
         $options = $this->getOptions();
         foreach($options as $name => $config){
+            if(isset($config['truncateAtStart'])) {
+                if($config['truncateAtStart']){
+                    $f = fopen($config['stream']
+                        ['writerParams']['stream'], 'w+');
+                    ftruncate($f, 0);
+                    rewind($f);
+                    fclose($f);
+                }
+                unset($config['truncateAtStart']);
+            }
             $log = \Zend_Log::factory($config);
             $this->addLog($name, $log);
             \Zend_Registry::set('log-' . $name, $log);
