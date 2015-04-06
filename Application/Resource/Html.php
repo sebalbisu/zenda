@@ -8,34 +8,34 @@ class Html
 extends \Zend_Application_Resource_ResourceAbstract
 {
     protected $_view;
-	/**
-	 * @return void
-	 */
-	public function init()
-	{
-	    $this->_view = $this->getBootstrap()
-	                        ->bootstrap('view')
+    /**
+     * @return void
+     */
+    public function init()
+    {
+        $this->_view = $this->getBootstrap()
+                            ->bootstrap('view')
                             ->view;
                             
-	    $options = $this->getOptions();
+        $options = $this->getOptions();
         if(isset($options['metas'])){             
             $this->_initMetas($options['metas']);
         }
-	    if(isset($options['links'])){ 
-	        $this->_initLinks($options['links']);
-	    }
-	    if(isset($options['scripts'])){ 
-	        $this->_initScripts($options['scripts']);
-	    }
-	    if(isset($options['title'])){ 
-	        $this->_initTitle($options['title']);
-	    }
-	    
-	    return;
-	}
-	
-	protected function _initMetas($options)
-	{
+        if(isset($options['links'])){ 
+            $this->_initLinks($options['links']);
+        }
+        if(isset($options['scripts'])){ 
+            $this->_initScripts($options['scripts']);
+        }
+        if(isset($options['title'])){ 
+            $this->_initTitle($options['title']);
+        }
+        
+        return;
+    }
+    
+    protected function _initMetas($options)
+    {
         //names
         if(isset($options['name'])){        
             foreach($options['name'] as $name => $content){
@@ -48,9 +48,9 @@ extends \Zend_Application_Resource_ResourceAbstract
                 $this->_view->headMeta()->appendHttpEquiv($name, (string) $content);
             }
         }       
-        return;	
-	}
-	
+        return;    
+    }
+    
     protected function _initLinks($options)
     {
         foreach($options as $sectionName => $section){

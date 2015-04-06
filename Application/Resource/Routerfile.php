@@ -43,7 +43,7 @@ extends \Zend_Application_Resource_ResourceAbstract
             $options = $this->getOptions();
             if (!isset($options['path'])) {
                 throw new \Exception(
-                	'the Path to the file for routes is required');
+                    'the Path to the file for routes is required');
             }
             $path = $options['path'];
             $type = isset($options['type']) ? 
